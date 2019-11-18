@@ -15,7 +15,7 @@ get size file MB task "my unique task name " . accepts index values in the range
 cls
 $InstalDir=(Get-ItemProperty -Path 'HKLM:\SOFTWARE\Wow6432Node\CobianSoft\Cobian Backup 11\' | Select-Object -ExpandProperty 'Installation directory')
 #logs file today dir
-#получение полноко пути сегодняшнего файла
+#получение полного пути сегодняшнего файла
 $filename= $InstalDir + "Logs\log "+ (get-date -Format yyyy-MM-dd ).ToString()+".txt"
 #regular expression
 # регулярное выражение
@@ -26,7 +26,7 @@ switch -regex ($args[0])
   {
 
   # zabbix LLD get 
-  #find LLD zabbix Name shedule
+  #find LLD zabbix Name shedule.
   # поиск низкоуровневого обнаружения
 "^[l,L][l,L][d,D]$" {
                           $mainlist = $InstalDir + 'DB\MainList.lst'
@@ -40,8 +40,8 @@ switch -regex ($args[0])
                           } | ConvertTo-Json
                         } 
 
-# all matches print for DEBUG 
-# вывести все совпадения 
+# all matches print. For DEBUG 
+# вывести все совпадения. Для отладки.
 # 
 # ----------------------------------------------------------------------------
 "^[a,A][l,L][l,L]$"{
@@ -65,13 +65,13 @@ switch -regex ($args[0])
               0 - errors count 
               1 - checked files count
               2 - copy files count 
-              3 - size files count
+              3 - size files count(convert GB to Mb)
              Проверка args[1] принадлежности к диапазону 0..3, иначе выход из скрипта!
               Индексы:
               0 - количество ошибок
               1 - проверенно файлов
               2 - скопированно файлов
-              3 - объем данных.
+              3 - объем данных(конвертация GB to Mb)
 
          #>
             if ( ([regex]::Match( $args[1], '^[0-3]$')).success -eq $true) 
@@ -84,8 +84,8 @@ switch -regex ($args[0])
                         #$matches.coun > 0 иначе выход, регулярное выражение не найдено
 
                         if ($matches.count -gt 0)
-                        {#create array
-                         #создаем массив
+                        {#create array object
+                         #создаем массив 
                          $out1 = New-Object System.Collections.Generic.List[System.Object]
                          foreach ($match in $matches)
                                     { #check size Gigabyte and convert to Megabyte
