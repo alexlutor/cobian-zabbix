@@ -17,11 +17,12 @@ $InstalDir=(Get-ItemProperty -Path 'HKLM:\SOFTWARE\Wow6432Node\CobianSoft\Cobian
 #logs file today dir
 #получение полного пути сегодняшнего файла
 $filename= $InstalDir + "Logs\log "+ (get-date -Format yyyy-MM-dd ).ToString()+".txt"
-#regular expression
-# регулярное выражение
+#regular expression for find end task log message. Modify this is a regexp. test regexp -  https://regex101.com/
+#regexp for langue RUSSIAN text log char
+# регулярное выражение. Изменить под себя, проверить на сайте https://regex101.com/
 $RegexpTaskEnd = 'Задание "' + $args[0] + '" завершено. Ошибок:\s(\d+), обработано файлов:\s+(\d+),\s+скопировано\s+файлов:\s+(\d+),\s+общий\sразмер:\s(\d+,\d+)\s+(\w+[GB|MB])'
 
-
+#switch LLD or ALL or Zabbix.items
 switch -regex ($args[0])
   {
 
