@@ -1,6 +1,6 @@
 ﻿<#
 examples:
-1) filename.ps1 full
+1) filename.ps1 all
 Print all matches
 
 2)filename.ps1 LLD
